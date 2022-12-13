@@ -82,3 +82,12 @@ class Data(Dataset):
 
         return image, label
    ```
+
+```python
+
+image, label = self.RandomCrop(ima, lab, crop_factor=(64, 128, 256))  # [z,y,x]
+
+# Crop했는데 만약 image.any() == False -> zero arry라면 zero array가 나오지 않을 때까지 다시 Crop을 진행
+while (image.any() == 0):
+    image, label = self.RandomCrop(ima, lab, crop_factor=(64, 128, 256))  # [z,y,x]
+```
